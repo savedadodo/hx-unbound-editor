@@ -74,6 +74,21 @@ while an edit is pending. If the default port is occupied, launch with
 `-Port 48749` and use the same port when stopping. `-NoBrowser` runs without
 opening a desktop browser. The scripts do not change execution policy.
 
+## Custom model names
+
+If your firmware shows renamed stock models, the editor can show the same names. Put a CSV
+named `custom-names.csv` in this folder (git ignores it), or point `HX_UNBOUND_NAMES` at one:
+
+```csv
+internal,floor_name,real_name
+HD2_DistKinkyBoostMono,Kinky Boost,My Boost
+```
+
+`internal` is HX Edit's symbolic ID; `real_name` is the name to show (`floor_name` is ignored).
+Names apply to the model browser, the stock list and the live signal path. Search finds a model
+by either name. Display only: presets, model numbers and the device are unchanged, NAM blocks
+keep their capture names, and no list of names ships with this package.
+
 ## Offline source checks
 
 Python 3.11+ and Node.js are required for these checks. No device, installed

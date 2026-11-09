@@ -19,6 +19,7 @@ from floor_nam_navigation import LEGACY_LABELS, read_slot_labels
 from floor_boost import boost_identity, edit_boost, edit_revision
 from floor_control_session import ControlSession, placement_catalog
 from floor_visual_catalog import installed_resources, visual_catalog
+import custom_names
 
 
 ROOT = Path(__file__).resolve().parent
@@ -109,6 +110,16 @@ class Handler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(data)
 
+    def named_state(self, snapshot):
+        """The live state as the page sees it: stock blocks under the user's custom names, if any."""
+        binary = self.server.controls.binary
+        if not snapshot.get("board") or not custom_names.symbol_names() or not binary.is_file():
+            return snapshot
+        try:
+            return custom_names.state(snapshot, placement_catalog(binary, binary.stat().st_mtime_ns))
+        except (OSError, ValueError, subprocess.SubprocessError):
+            return snapshot
+
     def do_GET(self):
         if self.headers.get('Host') == HOST and self.path == '/live/capabilities':
             payload = {**release_policy.capabilities(getattr(self.server, 'experimental_device', False)),
@@ -159,7 +170,7 @@ class Handler(BaseHTTPRequestHandler):
                     return
                 placements = placement_catalog(binary, binary.stat().st_mtime_ns)
                 if self.path == "/live/models":
-                    self.reply(200, "application/json", placements)
+                    self.reply(200, "application/json", custom_names.catalog(placements))
                     return
                 metadata, art = visual_catalog(installed_resources(), placements)
                 if icon:
@@ -176,7 +187,7 @@ class Handler(BaseHTTPRequestHandler):
                     self.end_headers()
                     self.wfile.write(body)
                 else:
-                    self.reply(200, "application/json", metadata)
+                    self.reply(200, "application/json", custom_names.visual(metadata, placements))
             except (OSError, ValueError, subprocess.SubprocessError) as exc:
                 self.reply(503, "application/json", json.dumps({"error": str(exc)}).encode())
             return
@@ -190,7 +201,7 @@ class Handler(BaseHTTPRequestHandler):
                 if self.headers.get("X-Floor-Version") == version:
                     self.reply(204, "application/json", b"")
                 else:
-                    self.reply(200, "application/json", json.dumps(snapshot).encode())
+                    self.reply(200, "application/json", json.dumps(self.named_state(snapshot)).encode())
             else:
                 self.send_error(403)
             return

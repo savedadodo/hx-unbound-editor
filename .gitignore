@@ -21,3 +21,4 @@ target/
 .env
 .env.*
 !/.env.example
+/custom-names.csv

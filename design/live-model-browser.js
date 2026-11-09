@@ -122,7 +122,7 @@ function createModelBrowser({selectModel, notice, target, libraryChanged}) {
       if(!globalSearch && shelf && shelf!==row.shelf)continue;
       if(showInstrument && filter && (row.instrument||"unknown").toLowerCase()!==filter)continue;
       if(category==="NAM" && engine && engine!==(row.engine||"Unconverted"))continue;
-      if(query && ![row.name,row.shelf,row.category,row.instrument,row.variant].filter(Boolean).join(" ").toLowerCase().includes(query))continue;
+      if(query && ![row.name,row.stockName,row.shelf,row.category,row.instrument,row.variant].filter(Boolean).join(" ").toLowerCase().includes(query))continue;
       const card=element("div");card.className="model-tile";card.style.setProperty("--cat",tint(row.category));
       const btn=element("button");btn.type="button";btn.className="model-choice";
       const variant=row.category==="NAM"?[typeDisplay(row.shelf),row.engine,row.libraryOnly?"Library only":row.installed?"On Floor":"Local"].filter(Boolean).join(" · "):

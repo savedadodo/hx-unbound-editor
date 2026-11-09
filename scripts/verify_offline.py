@@ -7,7 +7,7 @@ ROOT = Path(__file__).resolve().parents[1]
 (ROOT/'build').mkdir(exist_ok=True)
 commands = [
     [sys.executable, '-B', 'scripts/check_package.py'],
-    [sys.executable, '-B', '-m', 'unittest', 'verify_configured_favorites', 'verify_nam_navigation', 'verify_nam_shelf_workflow', 'verify_preview_policy'],
+    [sys.executable, '-B', '-m', 'unittest', 'verify_configured_favorites', 'verify_nam_navigation', 'verify_nam_shelf_workflow', 'verify_preview_policy', 'verify_custom_names'],
 ]
 commands += [['node','--check',str(p.relative_to(ROOT))] for p in sorted((ROOT/'design').glob('*.js'))]
 for command in commands:

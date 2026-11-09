@@ -39,10 +39,11 @@
     },
     {
       "path": "floor_live_editor.py",
-      "sha256": "c301a14c9018e7ba597d4b8e6f853aeadfa36c8f3b246ac2c4631722cde419eb",
+      "sha256": "c436ead5f3701ca5fbd05a0e31ad223c86027eef455b6d28f095c0a0e6094a8a",
       "source": "floor_live_editor.py",
       "changes": [
-        "Public preview: offline startup, explicit device opt-in, blocked capture transfers, portable launch and no legacy personal UI."
+        "Public preview: offline startup, explicit device opt-in, blocked capture transfers, portable launch and no legacy personal UI.",
+        "custom display names (savedadodo fork)"
       ]
     },
     {
@@ -181,11 +182,12 @@
     },
     {
       "path": "design/live-model-browser.js",
-      "sha256": "5e3dd507619bab017356a4ad0ac26cf3486a9753b28ed509d406674101ee4315",
+      "sha256": "eceb5e85c37f140ebea65869bb3acee413dabdd4cf083e26167d4988c32fd272",
       "source": "design/live-model-browser.js",
       "changes": [
         "Public preview: offline startup, explicit device opt-in, blocked capture transfers, portable launch and no legacy personal UI.",
-        "Explicit accessible names for capture classification controls."
+        "Explicit accessible names for capture classification controls.",
+        "custom display names (savedadodo fork)"
       ]
     },
     {
@@ -684,9 +686,11 @@
     },
     {
       "path": ".gitignore",
-      "sha256": "d5a0e3ba5542190306bb7661990bb91e8ca49529884c2f8482d7c5fc74ea10a6",
+      "sha256": "14c2185c5814db65b2947ab9cbba118eaf701d61c2bfba69e341a415a3d24c9e",
       "source": "publication/package-template/.gitignore",
-      "changes": []
+      "changes": [
+        "custom display names (savedadodo fork)"
+      ]
     },
     {
       "path": "docs/STATUS.md",
@@ -708,9 +712,11 @@
     },
     {
       "path": "README.md",
-      "sha256": "8baaf39d4cac5ebeafed7d5192161f3798b18a7cf04d778a205ccd85c8801dcf",
+      "sha256": "6b28abe4d35c3c59ca18ac46138768e566237291751a716f36e639e6a403585f",
       "source": "publication/package-template/README.md",
-      "changes": []
+      "changes": [
+        "custom display names (savedadodo fork)"
+      ]
     },
     {
       "path": "scripts/check_package.py",
@@ -726,9 +732,11 @@
     },
     {
       "path": "scripts/verify_offline.py",
-      "sha256": "e087791476b14bf93652ccbd3719decec404ab0530762c7f959c02f97e2841c8",
+      "sha256": "b50105e8fe3351a7baaf0df80ba1058cb265118f83453c1d65b6d5065822397f",
       "source": "publication/package-template/scripts/verify_offline.py",
-      "changes": []
+      "changes": [
+        "custom display names (savedadodo fork)"
+      ]
     },
     {
       "path": "THIRD_PARTY.md",
@@ -789,6 +797,22 @@
       "source": "publication/package-template/verify_preview_policy.py",
       "changes": [],
       "sha256": "844e9e4f40730a44b49152aa70372a76edc3611fc6acead07580237e487def71"
+    },
+    {
+      "path": "custom_names.py",
+      "sha256": "a796b3270da938ed2be4f8a5209b6b84abcc63bd6a4bb9c7f65225e727476aaa",
+      "source": "custom_names.py",
+      "changes": [
+        "custom display names (savedadodo fork)"
+      ]
+    },
+    {
+      "path": "verify_custom_names.py",
+      "sha256": "6fc2ce7ebe6c751f683ac357738cdfd9f370c0f68b6cad4976485bb3009c64bf",
+      "source": "verify_custom_names.py",
+      "changes": [
+        "custom display names (savedadodo fork)"
+      ]
     }
   ]
 }
